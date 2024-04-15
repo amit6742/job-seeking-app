@@ -1,10 +1,5 @@
 <div align="center">
-  <br />
-    <a href="https://youtu.be/R8CIO1DZ2b8" target="_blank">
-      
-
-  
-  <br />
+ 
 
 
 
@@ -12,14 +7,6 @@
 
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
-
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Assets & Code](#snippets)
-6. 🚀 [More](#more)
 
 
 This repository contains the code corresponding to an in-depth  available on Github channel, <a href="/" target="_blank"><b>Developer Amit</b></a>. 
@@ -38,7 +25,6 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 - React.js
 - Node.JS
-- Clerk
 - ZeGoCloud
 - Tailwind CSS
 
@@ -406,20 +392,11 @@ export default MeetingCard;
 
 ## <a name="more">🚀 More</a>
 
-**Advance your skills with React.js **
 
 
 
 
 <br />
 <br />
-
-**Accelerate your professional journey with the Expert Training program**
-
-And if you're hungry for more than just a course and want to understand how we learn and tackle tech challenges, hop into our personalized masterclass. We cover best practices, different web skills, and offer mentorship to boost your confidence. Let's learn and grow together!
-
-<a href="https://www.jsmastery.pro/masterclass" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/fed352ad-f27b-400d-9b8f-c7fe628acb84" alt="Project Banner">
-</a>
 
 #
