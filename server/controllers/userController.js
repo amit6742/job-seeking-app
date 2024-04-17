@@ -34,10 +34,25 @@ export const login = catchAsyncErrors(async(req, res, next)=>{
    const isPasswordMatch = await user.comparePassword(password) 
    if(!isPasswordMatch){
      return next (new ErrorHandler("invalid email password", 400))
+     
 
    }
    if(user.role !== role){
      return next (new ErrorHandler("user with this role not found", 400))
    }
    sendToken(user, 200, res, "login successfully")
+})
+
+export const logout = catchAsyncErrors(async(req, res, next)=>{
+  
+  res.status(201).cookie("token", "",{
+    httpOnly:true,
+    expires: new Date(Date.now())
+  }).json({
+    success:true,
+    message:"logout successfully"
+
+
+
+  })
 })
