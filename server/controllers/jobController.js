@@ -60,10 +60,58 @@ export const postJob = catchAsyncErrors(async (req, res, next) => {
   });
 
   res.status(200).json({
-    success:true,
-    message:"job posted successfully",
-    job
-  })
+    success: true,
+    message: "job posted successfully",
+    job,
+  });
+});
+
+export const getmyJobs = catchAsyncErrors(async (req, res, next) => {
+  const { role } = req.user;
+  if (role === "Job Seeker") {
+    return next(
+      new ErrorHandler("Job seeker is not allowed this resources", 400)
+    );
+  }
+
+  const myJobs = await Job.find({postedBy: req.user._id})
+  res.status(200).json({
+    success: true,
+    myJobs,
+  });
 
 
 });
+
+export const updateJob = catchAsyncErrors(async(req, res, next)=>{
+
+  const { role } = req.user;
+  if (role === "Job Seeker") {
+    return next(
+      new ErrorHandler("Job seeker is not allowed this resources", 400)
+    );
+  }
+
+  const {id} = req.params;
+  let job = await Job.findById(id)
+  if(!job){
+    return next(
+      new ErrorHandler("oops job not found", 404)
+    );
+
+  }
+
+  job = await Job.findByIdAndUpdate(id,req.body,{
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+
+  })
+  res.status(200).json({
+    success: true,
+    message: "job updated successfully",
+    job,
+  });
+  
+
+})
