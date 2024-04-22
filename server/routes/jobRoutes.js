@@ -8,5 +8,4 @@ router.post("/post", isAuthorized, postJob)
 router.get("/getmyjobs", isAuthorized, getmyJobs)
 router.put("/update/:id", isAuthorized, updateJob)
 router.delete("/delete/:id", isAuthorized, deleteJob)
-
 export default router;
