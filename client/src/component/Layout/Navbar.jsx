@@ -1,4 +1,4 @@
-import  { useContext, useState } from "react";
+import  { useContext,  useState } from "react";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -13,7 +13,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/user/logout",
+        "http://localhost:4000/api/v1/user/logout",
         {
           withCredentials: true,
         }

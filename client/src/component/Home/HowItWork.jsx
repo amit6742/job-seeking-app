@@ -6,7 +6,7 @@ import { IoMdSend } from "react-icons/io";
 const HowItWorks = () => {
   return (
     <>
-      <div className="howitworks">
+      <div className="howitworks  ">
         <div className="container">
           <h3 className="font-bold text-2xl  tracking-10 text-gray-900 group-hover:text-gray-600">How JobZee Works</h3>
           <div className="banner">

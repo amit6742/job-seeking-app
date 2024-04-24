@@ -19,7 +19,7 @@ const PopularCategories = () => {
     {
       id: 1,
       title: "Graphics & Design",
-      subTitle: "305 Open Positions",
+      subTitle: "305+ Open Positions",
       icon: <MdOutlineDesignServices />,
     },
     {
@@ -71,7 +71,7 @@ const PopularCategories = () => {
       icon:<DiAndroid />,
     },
     {
-      id: 9,
+      id: 10,
       title: "Blockchain Development",
       subTitle: "1720+ Open Positions",
       icon:<SiHiveBlockchain />,

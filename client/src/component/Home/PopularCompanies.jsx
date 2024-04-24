@@ -1,11 +1,8 @@
-
 import { FaMicrosoft, FaApple } from "react-icons/fa";
 import { SiTesla } from "react-icons/si";
 import { FaGoogle } from "react-icons/fa";
 import { FaSpotify } from "react-icons/fa";
 import { FaAmazon } from "react-icons/fa";
-
-
 
 const PopularCompanies = () => {
   const companies = [
@@ -36,8 +33,7 @@ const PopularCompanies = () => {
       title: "Spotify",
       location: "Street 13 Bangluru, Karnataka",
       openPositions: 10,
-      icon: <FaSpotify />
-      ,
+      icon: <FaSpotify />,
     },
     {
       id: 5,
@@ -51,17 +47,11 @@ const PopularCompanies = () => {
       title: "Google",
       location: "Street 13 Bangluru, Karnataka",
       openPositions: 20,
-      icon: <FaGoogle/>,
-    }
-
-
-
-
-
-
+      icon: <FaGoogle />,
+    },
   ];
   return (
-    <div className="companies ">
+    <div className="companies  text-center text-2xl font-semibold ">
       <div className="container ">
         <h3>TOP COMPANIES</h3>
         <div className="banner">
