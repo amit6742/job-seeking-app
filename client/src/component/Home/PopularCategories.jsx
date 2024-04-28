@@ -78,7 +78,7 @@ const PopularCategories = () => {
     },
   ];
   return (
-    <div className="categories text-center text-2xl font-semibold ">
+    <div className="categories ">
       <h3 >POPULAR CATEGORIES</h3>
       <div className="banner">
         {categories.map((element) => {

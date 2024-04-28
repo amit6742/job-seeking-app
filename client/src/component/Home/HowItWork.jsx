@@ -8,7 +8,7 @@ const HowItWorks = () => {
     <>
       <div className="howitworks  ">
         <div className="container">
-          <h3 className="font-bold text-2xl  tracking-10 text-gray-900 group-hover:text-gray-600">How JobZee Works</h3>
+          <h3 >How JobZee Works</h3>
           <div className="banner">
             <div className="card">
               <FaUserPlus />

@@ -51,7 +51,7 @@ const PopularCompanies = () => {
     },
   ];
   return (
-    <div className="companies  text-center text-2xl font-semibold ">
+    <div className="companies   ">
       <div className="container ">
         <h3>TOP COMPANIES</h3>
         <div className="banner">

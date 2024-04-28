@@ -10,9 +10,7 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 const app = express();
 dotenv.config({ path: "./config/config.env"
-
 })
-
 
 app.use(
   cors({
