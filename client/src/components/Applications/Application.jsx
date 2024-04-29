@@ -44,7 +44,6 @@ const Application = () => {
           },
         }
       );
-      console.log(data, formData)
       setName("");
       setEmail("");
       setCoverLetter("");
@@ -53,7 +52,6 @@ const Application = () => {
       setResume("");
       toast.success(data.message);
       navigateTo("/job/getall");
-      console.log(data)
     } catch (error) {
       toast.error(error.response.data.message);
     }
@@ -105,7 +103,7 @@ const Application = () => {
             </label>
             <input
               type="file"
-              accept=" .jpg, .png"
+              accept=".pdf, .jpg, .png"
               onChange={handleFileChange}
               style={{ width: "100%" }}
             />

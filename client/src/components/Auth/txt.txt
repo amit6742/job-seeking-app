@@ -1,210 +1,219 @@
-import  { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
-import toast from "react-hot-toast";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import ResumeModal from "./ResumeModal";
 
-const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [role, setRole] = useState("");
+const MyApplications = () => {
+  const { user } = useContext(Context);
+  const [input, setInput] = useState("");
 
-  const [isAuthorized, setIsAuthorized, user, setUser] = useContext(Context)
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  const [applications, setApplications] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [resumeImageUrl, setResumeImageUrl] = useState("");
+
+  const { isAuthorized } = useContext(Context);
+  const navigateTo = useNavigate();
+
+  const submitHandler = () => {
+    navigateTo(`/room/${input}`);
+  };
+
+  useEffect(() => {
     try {
-      const response = await axios.post(
-        "http://localhost:8080/api/v1/user/register",
-        { email, password, name, phone, role },
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      toast.success(response.data.message);
-      setName("");
-      setEmail("");
-      setPassword("");
-      setPhone("");
-      setRole("");
+      if (user && user.role === "Employer") {
+        axios
+          .get("http://localhost:4000/api/v1/application/employer/getall", {
+            withCredentials: true,
+          })
+          .then((res) => {
+            setApplications(res.data.applications);
+          });
+      } else {
+        axios
+          .get("http://localhost:4000/api/v1/application/jobseeker/getall", {
+            withCredentials: true,
+          })
+          .then((res) => {
+            setApplications(res.data.applications);
+          });
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }, [isAuthorized]);
 
-      setIsAuthorized(true);
-     
+  if (!isAuthorized) {
+    navigateTo("/login");
+  }
+
+  const deleteApplication = (id) => {
+    try {
+      axios
+        .delete(`http://localhost:4000/api/v1/application/delete/${id}`, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          toast.success(res.data.message);
+          setApplications((prevApplication) =>
+            prevApplication.filter((application) => application._id !== id)
+          );
+        });
     } catch (error) {
       toast.error(error.response.data.message);
     }
   };
 
-  if (isAuthorized) {
-    return <Navigate to={"/"} />;
-  }
+  const openModal = (imageUrl) => {
+    setResumeImageUrl(imageUrl);
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
-    <section className={isAuthorized}>
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <Link
-         to=""
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img
-            className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-            alt="logo"
-          />
-          Flowbite
-        </Link>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Create and account
-            </h1>
-            <form className="space-y-4 md:space-y-6">
-              <div>
-                <select value={role} onChange={(e) => setRole(e.target.value)}>
-                  <option value="">select role</option>
-                  <option value="Employer">Employer</option>
-                  <option value="Job Seeker">Job Seeker</option>
-                </select>
-               
-              </div>
+    <section className="my_applications page">
+      {user && user.role === "Job Seeker" ? (
+        <div className="container">
+          <h1>My Applications /interviews</h1>
 
+          {/* interviews calling system */}
+          <div className="interview ">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="enter your name"
+            />
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Your name
-                </label>
-                <input
-                  type="text"
-                 
-                  id="name"
-                  name="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                   Email Address
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required
-                  autoComplete
-                  autoCorrect
-                />
-              </div>
-
-
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                   Phone
-                </label>
-                <input
-                  type="number"
-                  name="phone"
-                  id="number"
-                  
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Number"
-                  required
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required
-                  
-                />
-              </div>
-              <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
-                    id="terms"
-                    aria-describedby="terms"
-                    type="checkbox"
-                    className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                    required
-                  />
-                </div>
-                <div className="ml-3 text-sm">
-                  <label
-                    htmlFor="terms"
-                    className="font-light text-gray-500 dark:text-gray-300"
-                  >
-                    I accept the{" "}
-                    <a
-                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                      href="#"
-                    >
-                      Terms and Conditions
-                    </a>
-                  </label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                onClick={handleRegister}
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >
-                Register
-              </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Already have an account?{" "}
-                <Link
-                  to={"/login"}
-                  
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Login here
-                </Link>
-              </p>
-            </form>
+            <button className="btn-int" onClick={submitHandler}>
+              join
+            </button>
           </div>
+
+          {applications.length <= 0 ? (
+            <>
+              {" "}
+              <h4>No Applications Found</h4>{" "}
+            </>
+          ) : (
+            applications.map((element) => {
+              return (
+                <JobSeekerCard
+                  element={element}
+                  key={element._id}
+                  deleteApplication={deleteApplication}
+                  openModal={openModal}
+                />
+              );
+            })
+          )}
         </div>
-      </div>
+      ) : (
+        <div className="container">
+          <h1>Applications From Job Seekers</h1>
+          {applications.length <= 0 ? (
+            <>
+              <h4>No Applications Found</h4>
+            </>
+          ) : (
+            applications.map((element) => {
+              return (
+                <EmployerCard
+                  element={element}
+                  key={element._id}
+                  openModal={openModal}
+                />
+              );
+            })
+          )}
+        </div>
+      )}
+      {modalOpen && (
+        <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />
+      )}
     </section>
   );
 };
 
-export default Register;
+export default MyApplications;
+
+const JobSeekerCard = (element, deleteApplication, openModal) => {
+  return (
+    <>
+      <div className="job_seeker_card">
+        <div className="detail">
+          <p>
+            <span>Name:</span> {element.name}
+          </p>
+          <p>
+            <span>Email:</span> {element.email}
+          </p>
+          <p>
+            <span>Phone:</span> {element.phone}
+          </p>
+          <p>
+            <span>Address:</span> {element.address}
+          </p>
+          <p>
+            <span>CoverLetter:</span> {element.coverLetter}
+          </p>
+        </div>
+        <div className="resume">
+          <img
+            src={element.resume.url}
+            alt="resume"
+            onClick={() => openModal(element.resume.url)}
+          />
+        </div>
+        <div className="btn_area">
+          <button onClick={() => deleteApplication(element._id)}>
+            Delete Application
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const EmployerCard = (element, openModal) => {
+  return (
+    <>
+      <div className="job_seeker_card">
+        <div className="detail">
+          <p>
+            <span>Name:</span> {element.name}
+          </p>
+          <p>
+            <span>Email:</span> {element.email}
+          </p>
+          <p>
+            <span>Phone:</span> {element.phone}
+          </p>
+          <p>
+            <span>Address:</span> {element.address}
+          </p>
+          <p>
+            <span>CoverLetter:</span> {element.coverLetter}
+          </p>
+        </div>
+        <div className="resume">
+          <img
+            src={element.resume.url}
+            alt="resume"
+            onClick={() => openModal(element.resume.url)}
+          />
+        </div>
+      </div>
+
+      <div>
+        <input type="text" />
+        hjfjffjfj
+        <button>join</button>
+      </div>
+    </>
+  );
+};

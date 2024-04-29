@@ -1,3 +1,4 @@
+
 import  { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import axios from "axios";
@@ -7,19 +8,19 @@ import ResumeModal from "./ResumeModal";
 
 const MyApplications = () => {
   const { user } = useContext(Context);
-  const [input, setInput] = useState("")
-  
+  const [input, setInput] = useState("");
   const [applications, setApplications] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [resumeImageUrl, setResumeImageUrl] = useState("");
 
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
+  const submitHandler = () => {
+    navigateTo(`/room/${input}`);
+  };
 
-  const submitHandler = ()=>{
-   navigateTo(`/room/${input}`)
-   
-  }
+
+
 
   useEffect(() => {
     try {
@@ -46,8 +47,9 @@ const MyApplications = () => {
   }, [isAuthorized]);
 
   if (!isAuthorized) {
-    navigateTo("/login");
+    navigateTo("/");
   }
+  
 
   const deleteApplication = (id) => {
     try {
@@ -75,22 +77,28 @@ const MyApplications = () => {
     setModalOpen(false);
   };
 
+ 
+
   return (
     <section className="my_applications page">
       {user && user.role === "Job Seeker" ? (
         <div className="container">
-          <h1>My Applications /interviews</h1>
-
-
+          <h1>My Applications</h1>
           {/* interviews calling system */}
-          <div className="interview">
-          <input type="text" value={input} onChange={(e)=> setInput(e.target.value)} placeholder="enter your name" />
-            
-            <button onClick={submitHandler}>join</button>
+          <div className="interview ">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="enter your name"
+            />
 
+            <button className="btn-int" onClick={submitHandler}>
+              join
+            </button>
           </div>
-         
-         
+           
+
           {applications.length <= 0 ? (
             <>
               {" "}
@@ -109,15 +117,13 @@ const MyApplications = () => {
             })
           )}
         </div>
-
-        
       ) : (
         <div className="container">
           <h1>Applications From Job Seekers</h1>
           {applications.length <= 0 ? (
             <>
               <h4>No Applications Found</h4>
-            
+              
               
             </>
           ) : (
@@ -131,7 +137,6 @@ const MyApplications = () => {
               );
             })
           )}
-          
         </div>
         
       )}
@@ -144,7 +149,7 @@ const MyApplications = () => {
 
 export default MyApplications;
 
-const JobSeekerCard = (element, deleteApplication, openModal) => {
+const JobSeekerCard = ({ element, deleteApplication, openModal }) => {
   return (
     <>
       <div className="job_seeker_card">
@@ -165,6 +170,7 @@ const JobSeekerCard = (element, deleteApplication, openModal) => {
             <span>CoverLetter:</span> {element.coverLetter}
           </p>
         </div>
+        
         <div className="resume">
           <img
             src={element.resume.url}
@@ -176,17 +182,15 @@ const JobSeekerCard = (element, deleteApplication, openModal) => {
           <button onClick={() => deleteApplication(element._id)}>
             Delete Application
           </button>
+          
         </div>
-
-
+        
       </div>
     </>
   );
 };
 
-
-
-const EmployerCard = ( element, openModal ) => {
+const EmployerCard = ({ element, openModal }) => {
   return (
     <>
       <div className="job_seeker_card">
@@ -215,15 +219,6 @@ const EmployerCard = ( element, openModal ) => {
           />
         </div>
       </div>
-
-
-      
-      <div>
-        <input type="text"/>
-        hjfjffjfj
-        <button>join</button>
-
-        </div>
     </>
   );
 };

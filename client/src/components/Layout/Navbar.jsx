@@ -64,9 +64,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-            <Link to={"/interview"} onClick={() => setShow(false)}>
-              interview
-            </Link>
+            
           </li>
            
         

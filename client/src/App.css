@@ -71,6 +71,39 @@ p {
     font-size: 1.15rem;
   }
 }
+.interview input {
+  height: 2rem;
+  border: 2px solid rgba(155, 145, 145, 0.634);
+  border-radius: 2px;
+  padding: 0 1rem;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #333;
+  background-color: #fff;
+ 
+  margin: 1rem;
+
+
+
+}
+.btn-int{
+  width: 100px;
+  height: 2rem;
+  border-radius: 10%;
+
+  border: 1px solid #2d5649;
+  font-size: 20px;
+  background: #2d5649;
+  color: #f9f9f9;
+  font-weight: 800;
+
+ 
+
+  cursor: pointer;
+  
+}
 
 .authPage {
   display: flex;
