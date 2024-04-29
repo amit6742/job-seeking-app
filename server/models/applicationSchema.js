@@ -1,47 +1,39 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
-const applicationSchema = new  mongoose.Schema({
-  name:{
+const applicationSchema = new mongoose.Schema({
+  name: {
     type: String,
     required: [true, "Please enter your Name!"],
     minLength: [3, "Name must contain at least 3 Characters!"],
     maxLength: [30, "Name cannot exceed 30 Characters!"],
   },
-  email:{
-    type:String,
+  email: {
+    type: String,
     required: [true, "Please enter your Email!"],
     validate: [validator.isEmail, "Please provide a valid Email!"],
   },
-  coverLetter:{
+  coverLetter: {
     type: String,
-    required: [true, "Please provide a cover letter."],
-    minLength: [30, "Cover letter must contain at least 30 Characters!"],
-    maxLength: [500, "Cover letter cannot exceed 500 Characters!"],
-
+    required: [true, "Please provide a cover letter!"],
   },
-  phone:{
+  phone: {
     type: Number,
-    required: [true, "Please provide phone number."],
-   
-
+    required: [true, "Please enter your Phone Number!"],
   },
-  address:{
+  address: {
     type: String,
-    required: [true, "Please provide address."],
-    minLength: [20, "Address must contain at least 20 characters!"],
+    required: [true, "Please enter your Address!"],
   },
-
-    resume: {
-      public_id: {
-        type: String, 
-        required: true,
-      },
-      url: {
-        type: String, 
-        required: true,
-      },
-   
+  resume: {
+    public_id: {
+      type: String, 
+      required: true,
+    },
+    url: {
+      type: String, 
+      required: true,
+    },
   },
   applicantID: {
     user: {
@@ -67,6 +59,6 @@ const applicationSchema = new  mongoose.Schema({
       required: true,
     },
   },
+});
 
-})
 export const Application = mongoose.model("Application", applicationSchema);

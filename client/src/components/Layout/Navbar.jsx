@@ -33,6 +33,7 @@ const Navbar = () => {
           <img src="/JobZee-logos__white.png" alt="logo" />
         </div>
         <ul className={!show ? "menu" : "show-menu menu"}>
+        
           <li>
             <Link to={"/"} onClick={() => setShow(false)}>
               HOME
@@ -40,14 +41,14 @@ const Navbar = () => {
           </li>
           <li>
             <Link to={"/job/getall"} onClick={() => setShow(false)}>
-              ALL JOBS
+              ALL JOBS 
             </Link>
           </li>
           <li>
             <Link to={"/applications/me"} onClick={() => setShow(false)}>
               {user && user.role === "Employer"
                 ? "APPLICANT'S APPLICATIONS"
-                : "MY APPLICATIONS"}
+                : "MY APPLICATIONS "}
             </Link>
           </li>
           {user && user.role === "Employer" ? (
@@ -62,9 +63,23 @@ const Navbar = () => {
                   VIEW YOUR JOBS
                 </Link>
               </li>
+              <li>
+            <Link to={"/interview"} onClick={() => setShow(false)}>
+              interview
+            </Link>
+          </li>
+           
+        
+          
             </>
           ) : (
-            <></>
+            <>
+
+          
+
+         
+          
+            </>
           )}
 
           <button onClick={handleLogout}>LOGOUT</button>

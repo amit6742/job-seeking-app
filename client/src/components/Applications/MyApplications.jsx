@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import  { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -7,12 +7,19 @@ import ResumeModal from "./ResumeModal";
 
 const MyApplications = () => {
   const { user } = useContext(Context);
+  const [input, setInput] = useState("")
+  
   const [applications, setApplications] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [resumeImageUrl, setResumeImageUrl] = useState("");
 
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
+
+  const submitHandler = ()=>{
+   navigateTo(`/room/${input}`)
+   
+  }
 
   useEffect(() => {
     try {
@@ -39,7 +46,7 @@ const MyApplications = () => {
   }, [isAuthorized]);
 
   if (!isAuthorized) {
-    navigateTo("/");
+    navigateTo("/login");
   }
 
   const deleteApplication = (id) => {
@@ -72,7 +79,18 @@ const MyApplications = () => {
     <section className="my_applications page">
       {user && user.role === "Job Seeker" ? (
         <div className="container">
-          <h1>My Applications</h1>
+          <h1>My Applications /interviews</h1>
+
+
+          {/* interviews calling system */}
+          <div className="interview">
+          <input type="text" value={input} onChange={(e)=> setInput(e.target.value)} placeholder="enter your name" />
+            
+            <button onClick={submitHandler}>join</button>
+
+          </div>
+         
+         
           {applications.length <= 0 ? (
             <>
               {" "}
@@ -91,12 +109,16 @@ const MyApplications = () => {
             })
           )}
         </div>
+
+        
       ) : (
         <div className="container">
           <h1>Applications From Job Seekers</h1>
           {applications.length <= 0 ? (
             <>
               <h4>No Applications Found</h4>
+            
+              
             </>
           ) : (
             applications.map((element) => {
@@ -109,7 +131,9 @@ const MyApplications = () => {
               );
             })
           )}
+          
         </div>
+        
       )}
       {modalOpen && (
         <ResumeModal imageUrl={resumeImageUrl} onClose={closeModal} />
@@ -120,7 +144,7 @@ const MyApplications = () => {
 
 export default MyApplications;
 
-const JobSeekerCard = (element, deleteApplication, openModal ) => {
+const JobSeekerCard = (element, deleteApplication, openModal) => {
   return (
     <>
       <div className="job_seeker_card">
@@ -153,10 +177,14 @@ const JobSeekerCard = (element, deleteApplication, openModal ) => {
             Delete Application
           </button>
         </div>
+
+
       </div>
     </>
   );
 };
+
+
 
 const EmployerCard = ( element, openModal ) => {
   return (
@@ -187,6 +215,15 @@ const EmployerCard = ( element, openModal ) => {
           />
         </div>
       </div>
+
+
+      
+      <div>
+        <input type="text"/>
+        hjfjffjfj
+        <button>join</button>
+
+        </div>
     </>
   );
 };

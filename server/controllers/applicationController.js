@@ -72,14 +72,15 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Resume file required", 400));
   }
   const { resume } = req.files;
+  console.log(resume);
   const allowedFormats = ["image/png", "image/jpeg", "image/webp"];
   if (!allowedFormats.includes(resume.mimetype)) {
     return next(new ErrorHandler("Invalid file type", 400));
   }
   const cloudinaryResponse = await cloudinary.uploader.upload(
     resume.tempFilePath
-   
   );
+  console.log(cloudinaryResponse);
 
   if (!cloudinaryResponse || !cloudinaryResponse.error) {
     console.error(
@@ -90,10 +91,12 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   }
 
   const { name, email, coverLetter, phone, address, jobId } = req.body;
+  console.log(name, email, coverLetter, phone, address, jobId)
   const applicantID = {
     user: req.user._id,
     role: "Job Seeker",
   };
+  console.log(applicantID)
   if (!jobId) {
     return next(new ErrorHandler("Job not found", 404));
   }
@@ -102,11 +105,13 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   if (!jobDetails) {
     return next(new ErrorHandler("Job not found", 404));
   }
+  console.log(applicantID)
 
   const employerID = {
     user: jobDetails.postedBy,
     role: "Employer",
   };
+  console.log(employerID)
   if (
     !name ||
     !email ||
@@ -119,7 +124,9 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   ) {
     return next(new ErrorHandler("Please fill all the fields", 400));
   }
+  console.log(employerID)
   const application = await Application.create({
+    
     applicantID,
     employerID,
     name,
@@ -130,8 +137,16 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
     resume: {
       public_id: cloudinaryResponse.public_id,
       url: cloudinaryResponse.secure_url,
-    }
-  })
+    },
+    
+  });
+  console.log("name",  applicantID,
+  employerID,
+  name,
+  email,
+  coverLetter,
+  phone,
+  address, )
   res.status(200).json({
     success: true,
     message: "Application submitted successfully",

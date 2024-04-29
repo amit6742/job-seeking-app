@@ -12,15 +12,22 @@ const Home = () => {
   if(isAuthorized){
     return <Navigate to={"/login"} />
   }
-  return (
+  return (<>
+
+ 
     <section className="homePage page" >
     <HeroSection/>
     <HowItWork/>
     <PopularCategories/>
     <PopularCompanies/>
-
-      
     </section>
+    <div>
+      <input  type="text"/>
+      <button>join</button>
+    </div>
+    </>
+  
+
     
   )
 }

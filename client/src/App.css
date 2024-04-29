@@ -234,7 +234,7 @@ p {
   }
 }
 .navbarHide {
-  display: none;
+  /* display: none; */
 }
 
 .heroSection {

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 
-const Job = () => {
+const Jobs = () => {
   const [jobs, setJobs] = useState([]);
   const { isAuthorized } = useContext(Context);
   const navigateTo = useNavigate();
@@ -42,8 +42,9 @@ const Job = () => {
             })}
         </div>
       </div>
+     
     </section>
   );
 };
 
-export default Job;
+export default Jobs;

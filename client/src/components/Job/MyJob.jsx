@@ -1,12 +1,12 @@
 import axios from "axios";
-import  { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { FaCheck } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { Context } from "../../main";
 import { useNavigate } from "react-router-dom";
 
-const MyJob = () => {
+const MyJobs = () => {
   const [myJobs, setMyJobs] = useState([]);
   const [editingMode, setEditingMode] = useState(null);
   const { isAuthorized, user } = useContext(Context);
@@ -353,4 +353,4 @@ const MyJob = () => {
   );
 };
 
-export default MyJob;
+export default MyJobs;
