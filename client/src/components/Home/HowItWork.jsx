@@ -3,7 +3,7 @@ import { FaUserPlus } from "react-icons/fa";
 import { MdFindInPage } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
 
-const HowItWorks = () => {
+const HowItWork = () => {
   return (
     <>
       <div className="howitworks  ">
@@ -41,4 +41,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowItWork;
