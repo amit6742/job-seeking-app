@@ -36,9 +36,9 @@ const HeroSection = () => {
             <h1>Find a job that suits</h1>
             <h1>your interests and skills</h1>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-              voluptate repellat modi quidem aliquid eaque ducimus ipsa et,
-              facere mollitia!
+            "Welcome to letworkIndia's Job Discovery Hub! Explore Your Path to Professional Success. We're dedicated to helping you uncover career opportunities that resonate with your passions and skills. From crafting standout resumes to honing interview techniques, we're your partners in navigating the job market maze. Let's embark on this journey together and land you the job you've been dreaming of!"
+
+
             </p>
           </div>
           <div className="image">
