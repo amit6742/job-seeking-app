@@ -1,9 +1,10 @@
-import  { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../main";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { GiHamburgerMenu } from "react-icons/gi";
+import logo from "/Job Seeking/job-seeking-app/client/public/job7.jpg";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -30,10 +31,20 @@ const Navbar = () => {
     <nav className={isAuthorized ? "navbarShow" : "navbarHide"}>
       <div className="container">
         <div className="logo">
-          <img src="/JobZee-logos__white.png" alt="logo" />
+          <img
+            src={logo}
+            style={{
+              height: "90px",
+              width: "90px",
+              marginTop: "14px",
+              cursor: "pointer",
+              borderRadius: "90%",
+              background: "black",
+              marginLeft: "12px",
+            }}
+          />
         </div>
         <ul className={!show ? "menu" : "show-menu menu"}>
-        
           <li>
             <Link to={"/"} onClick={() => setShow(false)}>
               HOME
@@ -41,14 +52,14 @@ const Navbar = () => {
           </li>
           <li>
             <Link to={"/job/getall"} onClick={() => setShow(false)}>
-              ALL JOBS 
+              ALL JOBS
             </Link>
           </li>
           <li>
             <Link to={"/applications/me"} onClick={() => setShow(false)}>
               {user && user.role === "Employer"
-                ? "APPLICANT'S APPLICATIONS"
-                : " INTERVIEWS / MY APPLICATIONS "}
+                ? "INTERVIEWS👩‍💻 / APPLICATIONS"
+                : " INTERVIEWS👨‍💻 / MY APPLICATIONS "}
             </Link>
           </li>
           {user && user.role === "Employer" ? (
@@ -63,21 +74,10 @@ const Navbar = () => {
                   VIEW YOUR JOBS
                 </Link>
               </li>
-              <li>
-            
-          </li>
-           
-        
-          
+              <li></li>
             </>
           ) : (
-            <>
-
-          
-
-         
-          
-            </>
+            <></>
           )}
 
           <button onClick={handleLogout}>LOGOUT</button>

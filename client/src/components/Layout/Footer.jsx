@@ -1,7 +1,7 @@
 import  { useContext } from "react";
 import { Context } from "../../main";
 import { Link } from "react-router-dom";
-import { FaFacebookF, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 const Footer = () => {
   const { isAuthorized } = useContext(Context);
@@ -10,18 +10,23 @@ const Footer = () => {
     <footer className= {isAuthorized ? "footerShow" : "footerHide"}>
       <div>&copy; All Rights Reserved By Developer Amit 2024 .</div>
       <div>
-        <Link to={"https://www.facebook.com/profile.php?id=100030535123397"} target="_blank">
-          <FaFacebookF />
+        <Link to={"https://github.com/amit6742"} target="_blank">
+        <FaGithub/>
+         
         </Link>
-        <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
-          <FaYoutube />
+        <Link to={"https://twitter.com/Amit_6742"} target="_blank">
+          <FaTwitter />
         </Link>
-        <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
+        <Link to={"https://www.linkedin.com/in/amit-singh-39757925a"} target="_blank">
           <FaLinkedin />
         </Link>
-        <Link to={"https://www.instagram.com/z_4_zeeshuuu/"} target="_blank">
+        <Link to={"#"} target="_blank">
+          <FaFacebookF />
+        </Link>
+        <Link to={"#"} target="_blank">
           <RiInstagramFill />
         </Link>
+        
       </div>
     </footer>
   );

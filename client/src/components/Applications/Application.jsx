@@ -64,7 +64,7 @@ const Application = () => {
   return (
     <section className="application">
       <div className="container">
-        <h3>Application Form</h3>
+        <h3>Application  Form</h3>
         <form onSubmit={handleApplication}>
           <input
             type="text"

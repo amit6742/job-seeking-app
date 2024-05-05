@@ -119,13 +119,35 @@ const MyApplications = () => {
         </div>
       ) : (
         <div className="container">
-          <h1>Applications From Job Seekers</h1>
+          <h1>Applications From Job Seekers </h1>
+
+          <div>
+             {/* interviews calling system */}
+          <div className="interview ">
+          <h5 style={{color: 'blueviolet'}}>Lets interview processing 👩‍💻</h5>
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="enter your name"
+            />
+
+            <button className="btn-int" onClick={submitHandler}>
+              join
+            </button>
+          </div>
+          </div>
+        
+          
           {applications.length <= 0 ? (
             <>
               <h4>No Applications Found</h4>
+               
+        
               
               
             </>
+            
           ) : (
             applications.map((element) => {
               return (
@@ -136,6 +158,8 @@ const MyApplications = () => {
                 />
               );
             })
+
+            
           )}
         </div>
         

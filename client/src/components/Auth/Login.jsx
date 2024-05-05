@@ -6,6 +6,7 @@ import { FaRegUser } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
+import logo from "/Job Seeking/job-seeking-app/client/public/joblogo.jpg"
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -46,7 +47,7 @@ const Login = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
+            <img src={logo} alt="logo" />
             <h3>Login to your account</h3>
           </div>
           <form>
@@ -66,7 +67,7 @@ const Login = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="zk@gmail.com"
+                  placeholder="JohnDeo@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />

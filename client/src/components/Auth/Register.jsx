@@ -8,6 +8,7 @@ import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Context } from "../../main";
+import logo from "/Job Seeking/job-seeking-app/client/public/joblogo.jpg"
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -53,12 +54,12 @@ const Register = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
+            <img src= {logo} alt="logo" />
             <h3>Create a new account</h3>
           </div>
           <form>
-            <div className="inputTag">
-              <label>Register As</label>
+            <div   className="inputTag">
+              <label >Register As</label>
               <div>
                 <select value={role} onChange={(e) => setRole(e.target.value)}>
                   <option value="">Select Role</option>
@@ -73,7 +74,7 @@ const Register = () => {
               <div>
                 <input
                   type="text"
-                  placeholder="Zeeshan"
+                  placeholder="enter user name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -85,7 +86,7 @@ const Register = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="zk@gmail.com"
+                  placeholder="JohnDeo@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
