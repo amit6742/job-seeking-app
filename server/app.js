@@ -8,9 +8,14 @@ import cors from "cors";
 import errorMiddleware from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+
 const app = express();
 dotenv.config({ path: "./config/config.env"
 })
+
+
+
+
 
 app.use(
   cors({
@@ -19,6 +24,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());
