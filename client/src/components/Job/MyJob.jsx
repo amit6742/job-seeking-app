@@ -54,8 +54,8 @@ const MyJobs = () => {
         toast.success(res.data.message);
         setEditingMode(null);
       })
-      .catch((error) => {
-        toast.error(error.response.data.message);
+      .catch(() => {
+        toast.error("something went wrong");
       });
   };
 

@@ -53,7 +53,7 @@ const Application = () => {
       toast.success(data.message);
       navigateTo("/job/getall");
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error("something went wrong!");
     }
   };
 

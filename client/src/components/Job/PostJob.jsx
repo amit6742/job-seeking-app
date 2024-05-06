@@ -50,12 +50,12 @@ const PostJob = () => {
 
             }
           }
-    ).then((res) => {
-      toast.success(res.data.message)
+    ).then(() => {
+      toast.success("successfully")
 
     })
-    .catch((error)=>{
-      toast.error(error.response.data.message)
+    .catch(()=>{
+      toast.error("something went wrong")
  
     })
   };
