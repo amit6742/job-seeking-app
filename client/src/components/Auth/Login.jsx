@@ -47,7 +47,7 @@ const Login = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src={logo} alt="logo" />
+            <img   src={logo} alt="logo" />
             <h3>Login to your account</h3>
           </div>
           <form>
