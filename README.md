@@ -1,17 +1,11 @@
 <div align="center">
- 
-
 
 
   <h3 align="center">Job Seeking </h3>
 
 </div>
 
-
-
-This repository contains the code corresponding to an in-depth  available on Github channel, <a href="/" target="_blank"><b>Developer Amit</b></a>. 
-
-
+This repository contains the code corresponding to an in-depth available on Github channel, <a href="/" target="_blank"><b>Developer Amit</b></a>.
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -30,13 +24,11 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 ## <a name="features">🔋 Features</a>
 
-
 👉 **Authentication**: Implements authentication and authorization features using Clerk, allowing users to securely log in via social sign-on or traditional email and password methods, while ensuring appropriate access levels and permissions within the platform.
 
 👉 **New Meeting**: Quickly start a new meeting, configuring camera and microphone settings before joining.
 
 👉 **Meeting Controls**: Participants have full control over meeting aspects, including recording, emoji reactions, screen sharing, muting/unmuting, sound adjustments, grid layout, participant list view, and individual participant management (pinning, muting, unmuting, blocking, allowing video share).
-
 
 👉 **Past Meetings List**: Access a list of previously held meetings, including details and metadata.
 
@@ -46,11 +38,9 @@ If you're getting started and need assistance or face any bugs, join our active 
 
 👉 **Join Meetings via Link**: Easily join meetings created by others by providing a link.
 
-
-
 👉 **Responsive Design**: Follows responsive design principles to ensure optimal user experience across devices, adapting seamlessly to different screen sizes and resolutions.
 
-and many more, including code architecture and reusability. 
+and many more, including code architecture and reusability.
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -67,8 +57,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git 
-cd 
+git
+cd
 ```
 
 **Installation**
@@ -78,11 +68,6 @@ Install the project dependencies using npm:
 ```bash
 npm install
 ```
-
-
-
-
-
 
 **Running the Project**
 
@@ -216,73 +201,71 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 <details>
 
-
-
-
 const config = {
-  darkMode: ['class'],
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  prefix: '',
-  theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
-    extend: {
-      colors: {
-        dark: {
-          1: '#1C1F2E',
-          2: '#161925',
-          3: '#252A41',
-          4: '#1E2757',
-        },
-        blue: {
-          1: '#0E78F9',
-        },
-        sky: {
-          1: '#C9DDFF',
-          2: '#ECF0FF',
-          3: '#F5FCFF',
-        },
-        orange: {
-          1: '#FF742E',
-        },
-        purple: {
-          1: '#830EF9',
-        },
-        yellow: {
-          1: '#F9A90E',
-        },
-      },
-      keyframes: {
-        'accordion-down': {
-          from: { height: '0' },
-          to: { height: 'var(--radix-accordion-content-height)' },
-        },
-        'accordion-up': {
-          from: { height: 'var(--radix-accordion-content-height)' },
-          to: { height: '0' },
-        },
-      },
-      animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
-      },
-      backgroundImage: {
-        hero: "url('/images/hero-background.png')",
-      },
-    },
-  },
-  plugins: [require('tailwindcss-animate')],
+darkMode: ['class'],
+content: [
+"./index.html",
+"./src/**/*.{js,ts,jsx,tsx}",
+],
+prefix: '',
+theme: {
+container: {
+center: true,
+padding: '2rem',
+screens: {
+'2xl': '1400px',
+},
+},
+extend: {
+colors: {
+dark: {
+1: '#1C1F2E',
+2: '#161925',
+3: '#252A41',
+4: '#1E2757',
+},
+blue: {
+1: '#0E78F9',
+},
+sky: {
+1: '#C9DDFF',
+2: '#ECF0FF',
+3: '#F5FCFF',
+},
+orange: {
+1: '#FF742E',
+},
+purple: {
+1: '#830EF9',
+},
+yellow: {
+1: '#F9A90E',
+},
+},
+keyframes: {
+'accordion-down': {
+from: { height: '0' },
+to: { height: 'var(--radix-accordion-content-height)' },
+},
+'accordion-up': {
+from: { height: 'var(--radix-accordion-content-height)' },
+to: { height: '0' },
+},
+},
+animation: {
+'accordion-down': 'accordion-down 0.2s ease-out',
+'accordion-up': 'accordion-up 0.2s ease-out',
+},
+backgroundImage: {
+hero: "url('/images/hero-background.png')",
+},
+},
+},
+plugins: [require('tailwindcss-animate')],
 } satisfies Config;
 
 export default config;
+
 ```
 
 </details>
@@ -389,12 +372,7 @@ export default MeetingCard;
 
 ## <a name="links">🔗 Links</a>
 
-
 ## <a name="more">🚀 More</a>
-
-
-
-
 
 <br />
 <br />

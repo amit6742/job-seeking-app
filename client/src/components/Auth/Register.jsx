@@ -40,7 +40,7 @@ const Register = () => {
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error("please fill all fields!");
     }
   };
 

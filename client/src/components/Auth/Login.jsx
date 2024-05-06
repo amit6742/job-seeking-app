@@ -34,7 +34,7 @@ const Login = () => {
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error("invalid email and password!")
     }
   };
 
