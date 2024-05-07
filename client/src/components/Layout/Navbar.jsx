@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        "https://job-seeking-app-amit6742s-projects.vercel.app/api/v1/user/logout",
         {
           withCredentials: true,
         }

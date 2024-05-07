@@ -19,7 +19,7 @@ dotenv.config({ path: "./config/config.env"
 
 app.use(
   cors({
-    origin: ["https://mern-deploy-five-hazel.vercel.app"],
+    origin: [""],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })

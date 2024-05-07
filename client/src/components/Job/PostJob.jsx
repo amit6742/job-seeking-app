@@ -29,7 +29,7 @@ const PostJob = () => {
       setFixedSalary("");
     }
     await axios.post(
-      "http://localhost:4000/api/v1/job/post",
+      "https://job-seeking-app-amit6742s-projects.vercel.app/api/v1/job/post",
       fixedSalary.length >= 4
         ? { title, description, category, country, city, location, fixedSalary }
         : {
