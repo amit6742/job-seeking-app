@@ -16,7 +16,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
   }
 
   const { resume } = req.files;
-  const allowedFormats = ["image/png", "image/jpeg", "image/webp", "image/pdf"];
+  const allowedFormats = ["image/png", "image/jpeg", "image/webp", ];
   if (!allowedFormats.includes(resume.mimetype)) {
     return next(
       new ErrorHandler("Invalid file type. Please upload a PNG file.", 400)
