@@ -34,7 +34,7 @@ const MyApplications = () => {
           });
       } else {
         axios
-          .get("${window.location.origin}/api/v1/application/jobseeker/getall", {
+          .get(`${window.location.origin}/api/v1/application/jobseeker/getall`, {
             withCredentials: true,
           })
           .then((res) => {
