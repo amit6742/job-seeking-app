@@ -28,7 +28,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/user/getuser",
+          `${window.location.origin}/api/v1/user/getuser`,
           {
             withCredentials: true,
           }

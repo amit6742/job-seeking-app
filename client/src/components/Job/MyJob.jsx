@@ -17,7 +17,7 @@ const MyJobs = () => {
     const fetchJobs = async () => {
       try {
         const { data } = await axios.get(
-          "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/job/getmyjobs",
+          "${window.location.origin}/api/v1/job/getmyjobs",
           { withCredentials: true }
         );
         setMyJobs(data.myJobs);
@@ -47,7 +47,7 @@ const MyJobs = () => {
   const handleUpdateJob = async (jobId) => {
     const updatedJob = myJobs.find((job) => job._id === jobId);
     await axios
-      .put(`https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/job/update/${jobId}`, updatedJob, {
+      .put(`${window.location.origin}/api/v1/job/update/${jobId}`, updatedJob, {
         withCredentials: true,
       })
       .then((res) => {
@@ -62,7 +62,7 @@ const MyJobs = () => {
   //Function For Deleting Job
   const handleDeleteJob = async (jobId) => {
     await axios
-      .delete(`https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/job/delete/${jobId}`, {
+      .delete(`${window.location.origin}/api/v1/job/delete/${jobId}`, {
         withCredentials: true,
       })
       .then((res) => {

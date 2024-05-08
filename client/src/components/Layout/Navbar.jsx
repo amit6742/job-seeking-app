@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/user/logout",
+        `${window.location.origin}/api/v1/user/logout`,
         {
           withCredentials: true,
         }

@@ -23,7 +23,7 @@ const Register = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/user/register",
+        `${window.location.origin}/api/v1/user/register`,
         { name, phone, email, role, password },
         {
           headers: {

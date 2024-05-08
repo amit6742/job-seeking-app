@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/user/login",
+        `${window.location.origin}/api/v1/user/login`,
         { email, password, role },
         {
           headers: {

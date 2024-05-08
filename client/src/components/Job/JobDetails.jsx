@@ -12,7 +12,7 @@ const JobDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/job/${id}`, {
+      .get(`${window.location.origin}/api/v1/job/${id}`, {
         withCredentials: true,
       })
       .then((res) => {

@@ -29,7 +29,7 @@ const PostJob = () => {
       setFixedSalary("");
     }
     await axios.post(
-      "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/job/post",
+      `${window.location.origin}/api/v1/job/post`,
       fixedSalary.length >= 4
         ? { title, description, category, country, city, location, fixedSalary }
         : {
