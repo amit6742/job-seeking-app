@@ -56,24 +56,24 @@ Make sure you have the following installed on your machine:
 
 **Cloning the Repository**
 
-```bash
+""`bash
 git
 cd
-```
+""`
 
 **Installation**
 
 Install the project dependencies using npm:
 
-```bash
+""`bash
 npm install
-```
+""`
 
 **Running the Project**
 
-```bash
+""`bash
 npm run dev
-```
+""`
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
@@ -82,7 +82,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 <details>
 <summary><code>app/globals.css</code></summary>
 
-```css
+""`css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -195,7 +195,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
     width: 100%;
   }
 }
-```
+""`
 
 </details>
 
@@ -266,7 +266,7 @@ plugins: [require('tailwindcss-animate')],
 
 export default config;
 
-```
+""`
 
 </details>
 
@@ -366,7 +366,7 @@ const MeetingCard = ({
 };
 
 export default MeetingCard;
-```
+""`
 
 </details>
 
