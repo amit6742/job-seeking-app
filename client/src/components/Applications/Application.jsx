@@ -35,7 +35,7 @@ const Application = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/application/post",
+        "https://tourmaline-mooncake-44ca9c.netlify.app/api/v1/application/post",
         formData,
         {
           withCredentials: true,
