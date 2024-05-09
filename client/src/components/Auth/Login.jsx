@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/login",
+        "https://backend-deployed-4ycn.onrender.com/api/v1/user/login",
         { email, password, role },
         {
           headers: {
@@ -35,7 +35,7 @@ const Login = () => {
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error("something went wrong", error);
      
     }
   };

@@ -14,7 +14,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        "https://backend-deployed-4ycn.onrender.com/api/v1/user/logout",
         {
           withCredentials: true,
         }
@@ -23,7 +23,7 @@ const Navbar = () => {
       setIsAuthorized(false);
       navigateTo("/login");
     } catch (error) {
-      toast.error(error.response.data.message), setIsAuthorized(true);
+      toast.error("logout successfully"), setIsAuthorized(true);
     }
   };
 
