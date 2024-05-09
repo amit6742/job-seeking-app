@@ -55,7 +55,8 @@ const PostJob = () => {
 
     })
     .catch(()=>{
-      toast.error("something went wrong")
+       toast.error("something went wrong")
+         
  
     })
   };

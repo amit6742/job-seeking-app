@@ -28,13 +28,15 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      console.log(data)
       toast.success(data.message);
       setEmail("");
       setPassword("");
       setRole("");
       setIsAuthorized(true);
     } catch (error) {
-      toast.error("invalid email and password!")
+      toast.error(error.response.data.message);
+     
     }
   };
 
@@ -70,6 +72,7 @@ const Login = () => {
                   placeholder="JohnDeo@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
                 <MdOutlineMailOutline />
               </div>
@@ -78,6 +81,7 @@ const Login = () => {
               <label>Password</label>
               <div>
                 <input
+                required
                   type="password"
                   placeholder="Your Password"
                   value={password}

@@ -15,13 +15,7 @@ dotenv.config({ path: "./config/config.env"
 })
 
 
-
-
-
-
-
-
-
+// frontend url
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL],
