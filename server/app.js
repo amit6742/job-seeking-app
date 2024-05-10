@@ -10,21 +10,15 @@ import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 
 
+
 const app = express();
 dotenv.config({ path: "./config/config.env"
 })
 
 
-// frontend url
-app.use(
-  cors({
-    origin: [process.env.FRONTEND_URL],
-    method: ["GET", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
 
 
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

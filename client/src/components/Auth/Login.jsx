@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://backend-deployed-4ycn.onrender.com/api/v1/user/login",
+        "/api/v1/user/login",
         { email, password, role },
         {
           headers: {
