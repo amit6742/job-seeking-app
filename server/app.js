@@ -8,6 +8,10 @@ import cors from "cors";
 import errorMiddleware from "./middlewares/error.js";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
+import path from 'path'
+
+
+
 
 
 
@@ -22,6 +26,7 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
 
@@ -34,6 +39,9 @@ app.use(
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);
+app.use("*", (req,res)=>{
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+})
 dbConnection();
 
 app.use(errorMiddleware);
